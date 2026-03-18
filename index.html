@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Classical Tours - Sustainability</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* --- Reset --- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cairo',sans-serif;background:#FAF9F6;color:#333;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+ul{list-style: disc inside; margin-left:15px;}
+
+/* --- Hero Section --- */
+.hero{
+  background:url('https://www.quillsuk.co.uk/wp-content/uploads/2024/02/Quills-UK-Environmental-Banner.jpg.webp') center/cover no-repeat;
+  height:90vh;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:white;
+  position:relative;
+}
+.hero::after{
+  content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.4);
+}
+.hero-content{position:relative;z-index:2;animation:fadeInDown 1s ease forwards;}
+.hero h1{font-size:3rem;margin-bottom:15px;}
+.hero p{font-size:1.3rem;font-weight:300;max-width:800px;line-height:1.4;}
+
+/* --- Split Sections --- */
+.split{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  max-width:1100px;margin:50px auto;padding:20px;opacity:0;transform:translateY(30px);transition:all 1s ease;
+}
+.split.visible{opacity:1;transform:translateY(0);}
+.split img{width:48%;border-radius:15px;object-fit:cover;max-height:300px;margin-bottom:15px;}
+.split div{width:48%;}
+.split h2{color:#285943;margin-bottom:12px;font-size:2rem;}
+.split p, .split li{font-size:1rem;line-height:1.5;}
+
+/* --- Glass Cards --- */
+.card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.2);
+  padding:20px;
+  margin:30px auto;
+  max-width:900px;
+  color:#285943;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  opacity:0;transform:translateY(20px);transition:all 0.8s ease;
+}
+.card.visible{opacity:1;transform:translateY(0);}
+.card h2{font-size:1.8rem;margin-bottom:10px;}
+.card p, .card li{margin-bottom:10px;line-height:1.5;font-size:1rem;}
+
+
+
+
+
+/* --- Parallax --- */
+.parallax{
+  background-attachment:fixed;
+  background-size:cover;
+  background-position:center;
+  height:60vh;
+  margin:50px 0;
+}
+
+/* --- Contact Form --- */
+form{display:flex;flex-direction:column;gap:12px;margin:30px auto;max-width:600px;}
+input,select,textarea{padding:10px;border-radius:6px;border:1px solid #ccc;font-size:1rem;width:100%;}
+textarea{resize:vertical;min-height:120px;}
+input[type="submit"]{background:#285943;color:white;border:none;font-weight:bold;cursor:pointer;}
+input[type="submit"]:hover{background:#4A7351;}
+#thankMessage{color:green;margin-top:10px;display:none;}
+
+/* --- Modal --- */
+.modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.7);}
+.modal-content{background:#fff;margin:5% auto;padding:20px;border-radius:12px;max-width:800px;position:relative;animation:fadeIn 0.3s;overflow-y:auto;max-height:80vh;}
+.close{position:absolute;top:10px;right:15px;font-size:1.3rem;font-weight:bold;color:#285943;cursor:pointer;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInDown{0%{opacity:0;transform:translateY(-50px);}100%{opacity:1;transform:translateY(0);}}
+
+/* --- Responsive --- */
+@media(max-width:768px){.split img,.split div{width:100%;}.hero h1{font-size:2rem;}.hero p{font-size:1.1rem;}}
+
+/* --- Sustainability Practices Grid New Design --- */
+.practices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.practices-grid .practice-card{
+  background:rgba(255,255,255,0.1); padding:25px; border-radius:15px; backdrop-filter:blur(8px); 
+  text-align:left; transition:transform 0.3s; cursor:pointer; color:white;
+}
+.practices-grid .practice-card h3{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+.practices-grid .practice-card p{font-size:0.95rem; line-height:1.4;}
+.practices-grid .practice-card:hover{
+  transform:translateY(-8px) scale(1.03); background:rgba(255,255,255,0.15);
+}
+
+/* --- Actions Section --- */
+.actions-section{
+  padding:60px 20px;
+  background:#F8FBF9;
+  text-align:center;
+}
+
+.actions-section h2{
+  font-size:2.5rem;
+  color:#285943;
+  margin-bottom:20px;
+}
+
+/* Intro */
+.actions-section .intro{
+  max-width:850px;
+  margin:0 auto 40px;
+  font-size:1.1rem;
+  color:#555;
+  line-height:1.6;
+}
+
+/* Grid */
+.actions-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* Box */
+.action-box{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  text-align:left;
+  border-top:4px solid #285943;
+  box-shadow:0 5px 18px rgba(0,0,0,0.06);
+  transition:0.3s;
+}
+
+.action-box h3{
+  color:#285943;
+  margin-bottom:10px;
+  font-size:1.2rem;
+}
+
+.action-box ul{
+  padding-left:15px;
+}
+
+.action-box li{
+  font-size:0.95rem;
+  margin-bottom:6px;
+  color:#444;
+}
+
+/* Hover */
+.action-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* Closing */
+.closing{
+  margin-top:40px;
+  font-size:1.1rem;
+  color:#444;
+}
+
+
+
+/* Responsive */
+@media(max-width:768px){
+  .actions-section h2{
+    font-size:2rem;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>🌿 Enjoy Jordan…</h1>
+    <p>Travel Responsibly. Travel with us, respect local culture, and help protect Jordan’s natural beauty.</p>
+  </div>
+</section>
+
+<!-- Sustainability Commitment Full Width -->
+<section class="fade-section" style="background:#E6F0E9; padding:60px 20px;">
+  <div style="max-width:1000px; margin:0 auto; text-align:center;">
+    <h2 style="color:#285943; font-size:2.5rem; margin-bottom:20px;">🌱 Our Sustainability Commitment</h2>
+    <p style="font-size:1.1rem; line-height:1.6; margin-bottom:15px;">
+      At Jordan Classical Tours, our mission is to provide high-quality, authentic travel experiences while preserving the natural environment, supporting local communities, and respecting Jordan’s rich cultural heritage.
+    </p>
+    <p style="font-size:1.1rem; line-height:1.6; margin-bottom:25px;">
+      We are committed to responsible tourism practices that create positive impacts for our guests, partners, and the destinations we serve, ensuring that future generations can continue to experience the beauty of Jordan.
+    </p>
+  </div>
+</section>
+
+<!-- Sustainability Policy -->
+<div class="card fade-section">
+  <h2>📜 Our Sustainability Policy</h2>
+
+  <ul style="margin-top:15px;">
+    <li>
+      Sustainability is part of our daily operations and long-term strategy at Jordan Classical Tours.
+    </li>
+    <li>
+      We are committed to minimizing environmental, social, and cultural impacts while creating positive contributions to local communities and destinations.
+    </li>
+    <li>
+      Our approach covers all aspects of our business, including suppliers, transport, accommodations, excursions, and customer communication.
+    </li>
+    <li>
+      We promote environmental protection through responsible use of energy, water, and resources.
+    </li>
+    <li>
+      We support local communities and respect cultural heritage.
+    </li>
+    <li>
+      We are committed to human rights, child protection, animal welfare, and transparent communication with our clients and partners.
+    </li>
+    <li>
+      Our sustainability performance is continuously monitored and improved through regular reviews, supplier assessments, and customer feedback.
+    </li>
+  </ul>
+
+  <!-- Download Button -->
+  <div style="margin-top:20px; text-align:center;">
+    <a href="#" class="btn" style="padding:12px 25px; background:#285943; color:white; border-radius:8px; display:inline-block;">
+      ⬇️ Download Full Sustainability Policy
+    </a>
+  </div>
+</div>
+
+<section class="fade-section actions-section">
+  <h2>🌍 Our Sustainability Actions & Achievements</h2>
+
+  <p class="intro">
+    At Jordan Classical Tours, sustainability is implemented through concrete actions across our operations, partnerships, and travel experiences.
+  </p>
+
+  <div class="actions-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px;">
+
+    <!-- Supporting Local Communities -->
+    <div class="action-card" data-content="<ul><li>Prioritizing locally owned accommodations, desert camps, and service providers across Jordan</li><li>Working with licensed local guides and drivers, ensuring fair working conditions and supporting local employment</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://scontent.famm4-2.fna.fbcdn.net/v/t39.30808-6/481044124_561880906861632_1046280058831435458_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=9mxZf0HUmjgQ7kNvwHW5x3Y&_nc_oc=Adnvj_95oz2v-s2ZHHQUtz7ehAayBHOsC4IV6xx7WU2uMJtWCdeYLr6RQ4VIj1FhuXQ&_nc_zt=23&_nc_ht=scontent.famm4-2.fna&_nc_gid=_B4wqZWrES-4tCe98zr-5g&_nc_ss=8&oh=00_AfzKH8DjLGHjUcDrp0eoyMcAF156aSqDgYgFWp3Y5Q_9Ww&oe=69C04BCD" alt="Supporting Local Communities" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Supporting Local Communities</h3>
+    </div>
+
+    <!-- Environmental Management -->
+    <div class="action-card" data-content="<ul><li>Reducing paper use through digital practices and double-sided printing</li><li>Promoting energy-saving measures in daily operations</li><li>Encouraging responsible water use in a water-scarce country</li><li>Reducing waste and discouraging single-use plastics during tours</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://i.pinimg.com/736x/b3/7b/7f/b37b7f984de2211ff423605c328d10e9.jpg" alt="Environmental Management" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Environmental Management</h3>
+    </div>
+
+    <!-- Tree Planting Initiative -->
+    <div class="action-card" data-content="<ul><li>Planting more than 50 trees on land provided by the company’s owner, with team participation</li><li>Contributing to biodiversity, green cover, and environmental awareness</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://i.pinimg.com/736x/19/84/cd/1984cd92f5bb1e9fb821e85977b401b5.jpg" alt="Tree Planting Initiative" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Tree Planting Initiative</h3>
+    </div>
+
+    <!-- Sustainable Transport -->
+    <div class="action-card" data-content="<ul><li>Optimizing routes to reduce travel distances and emissions</li><li>Encouraging shared transport and working with responsible transport providers</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://i.pinimg.com/736x/a2/fe/66/a2fe662720647790cf736fa53009c8f8.jpg" alt="Sustainable Transport" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Sustainable Transport</h3>
+    </div>
+
+    <!-- Responsible Accommodation -->
+    <div class="action-card" data-content="<ul><li>Selecting accommodations that meet environmental and social standards</li><li>Supporting locally owned and community-based properties</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqEiIBl2QNqFO7RTv9aiAqbovG89EBrc0VD5gXyi22vzZcCdbK5Frv73cMyx9xNJicwU2I-xtNrAcqBKNiN8AbaEmH3_kl_C2c_frZHmAv-E3dg3LW70F-ZkCZKYJxSk8yiRwEo=s1360-w1360-h1020-rw" alt="Responsible Accommodation" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Responsible Accommodation</h3>
+    </div>
+
+    <!-- Responsible Excursions & Animal Welfare -->
+    <div class="action-card" data-content="<ul><li>Offering experiences that respect nature, culture, and local communities</li><li>Avoiding activities involving wildlife exploitation or animal cruelty</li><li>Monitoring animal welfare during tours</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://i.pinimg.com/1200x/59/79/82/597982b27334fe5daf0df7a32bd69c72.jpg" alt="Responsible Excursions & Animal Welfare" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Responsible Excursions & Animal Welfare</h3>
+    </div>
+
+    <!-- Guest Awareness & Communication -->
+    <div class="action-card" data-content="<ul><li>Providing pre-travel information and on-tour briefings on responsible travel</li><li>Promoting cultural respect, environmental awareness, and appropriate behavior</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg" alt="Guest Awareness & Communication" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Guest Awareness & Communication</h3>
+    </div>
+
+    <!-- Ethical Practices & Human Rights -->
+    <div class="action-card" data-content="<ul><li>Applying a zero-tolerance policy toward child labor, forced labor, and discrimination</li><li>Integrating sustainability and ethical standards into supplier partnerships</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://i.pinimg.com/736x/d1/5f/a4/d15fa419e378c01f03290ce66f856a80.jpg" alt="Ethical Practices & Human Rights" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Ethical Practices & Human Rights</h3>
+    </div>
+
+    <!-- Monitoring & Continuous Improvement -->
+    <div class="action-card" data-content="<ul><li>Collecting customer feedback, including sustainability-related input</li><li>Evaluating suppliers and reviewing performance regularly</li><li>Continuously improving sustainability actions and practices</li></ul>" style="cursor:pointer; display:flex; flex-direction:column; height:350px; border-radius:12px; overflow:hidden; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <img src="https://images.pexels.com/photos/3184300/pexels-photo-3184300.jpeg" alt="Monitoring & Continuous Improvement" style="width:100%; height:60%; object-fit:cover;">
+      <h3 style="margin:10px; text-align:center; font-size:1.1rem;">Monitoring & Continuous Improvement</h3>
+    </div>
+
+  </div>
+
+  <p class="closing">
+    We remain committed to strengthening our sustainability performance and contributing positively to Jordan’s environment, communities, and cultural heritage.
+  </p>
+</section>
+
+<!-- Popup Modal for Image Cards -->
+<div id="cardModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Sustainability Report Summary -->
+<section class="fade-section" style="background:#FFFFFF; padding:70px 20px;">
+  <div style="max-width:900px; margin:0 auto; text-align:center;">
+
+    <!-- Title -->
+    <h2 style="font-size:2.5rem; color:#285943; margin-bottom:20px;">
+      📊 Sustainability Report Summary
+    </h2>
+
+    <!-- Intro Paragraphs -->
+    <p style="font-size:1.1rem; color:#555; line-height:1.7; margin-bottom:15px;">
+      We believe in transparency and regularly share our sustainability progress with our guests, partners, and stakeholders.
+    </p>
+
+    <p style="font-size:1.1rem; color:#555; line-height:1.7; margin-bottom:15px;">
+      This report highlights our key commitments, achievements, and future actions as part of our journey toward responsible tourism and Travelife certification.
+    </p>
+
+    <p style="font-size:1.1rem; color:#555; line-height:1.7; margin-bottom:15px;">
+      Key highlights include the development of our Sustainability Policy, implementation of a Sustainability Action Plan, staff engagement initiatives, and continuous monitoring of our sustainability performance.
+    </p>
+
+    <!-- Download Button -->
+    <a href="#" style="display:inline-block; padding:15px 30px; background:#285943; color:white; border-radius:10px; font-size:1.1rem; font-weight:bold; text-decoration:none; margin:25px 0; transition:0.3s;">
+      👉 Download our latest Sustainability Report Summary (2023–2026 Progress Update)
+    </a>
+
+    <p style="font-size:1.1rem; color:#555; line-height:1.7; margin-top:15px;">
+      The report provides an overview of our sustainability management system, actions implemented, and future goals.
+    </p>
+
+  </div>
+</section>
+
+
+
+<!-- Sustainability Practices - Updated Content -->
+<section class="fade-section" style="background:#285943; color:white; padding:60px 20px;">
+  <div style="max-width:1100px; margin:0 auto; text-align:center;">
+    
+    <h2 style="font-size:2.5rem; margin-bottom:20px;">⚙️ Sustainability Practices</h2>
+    
+    <p style="max-width:900px; margin:0 auto 40px; line-height:1.7; font-size:1.1rem;">
+      By integrating the following sustainable practices into our operations, we aim to provide transformative travel experiences that not only captivate our guests but also contribute to a more sustainable and responsible future for Jordan and the global tourism industry:
+    </p>
+
+    <div class="practices-grid">
+
+      <div class="practice-card">
+        <h3>🌱 Internal Management</h3>
+        <p>Minimizing environmental impact through efficient resource use, energy-saving practices, and staff engagement in sustainability initiatives.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🌍 Environmental Initiatives</h3>
+        <p>Reducing carbon footprint through waste reduction, recycling, water conservation, and responsible resource management.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🏘️ Community Engagement</h3>
+        <p>Supporting local businesses, artisans, and community-based tourism to contribute to local economic development.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🌐 Responsible Tourism</h3>
+        <p>Promoting cultural respect, protecting heritage, and encouraging responsible behavior among our guests.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🏨 Sustainable Accommodations</h3>
+        <p>Selecting accommodations that prioritize environmental and social responsibility, including locally owned and eco-friendly properties.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🚗 Sustainable Transport</h3>
+        <p>Optimizing routes, encouraging shared transport, and working with responsible transport providers to reduce emissions.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🎓 Traveler Education</h3>
+        <p>Providing pre-trip and on-tour information to encourage responsible travel practices and cultural awareness.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🗺️ Excursions and Activities</h3>
+        <p>Designing low-impact experiences that respect nature, culture, and local communities.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>👥 Guides & Local Representatives</h3>
+        <p>Training guides to promote sustainability, cultural understanding, and responsible tourism practices.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>📍 Destination Responsibility</h3>
+        <p>Supporting sustainable destination management through collaboration with local stakeholders and initiatives.</p>
+      </div>
+
+      <div class="practice-card">
+        <h3>🛡️ Customer Communication & Protection</h3>
+        <p>Ensuring transparent communication, accurate information, and the safety and well-being of our guests.</p>
+      </div>
+
+    </div>
+
+    <p style="margin-top:40px; font-size:1.1rem; line-height:1.6;">
+      These practices guide how we plan, operate, and continuously improve our tours.
+    </p>
+
+  </div>
+</section>
+
+<!-- Responsible Travel Tips - Premium Design -->
+<section class="fade-section" style="background:#F4F8F6; padding:70px 20px;">
+  <div style="max-width:1100px; margin:0 auto; text-align:center;">
+
+    <h2 style="font-size:2.5rem; color:#285943; margin-bottom:20px;">
+      🌍 Responsible Travel Tips
+    </h2>
+
+    <!-- Intro -->
+    <p style="max-width:850px; margin:0 auto 40px; font-size:1.1rem; color:#555; line-height:1.7;">
+      We invite you to travel responsibly while exploring Jordan. By following simple guidelines, you can help protect the environment, support local communities, and preserve the country’s rich cultural heritage.
+    </p>
+
+    <!-- Tips Grid -->
+    <div class="actions-grid">
+
+      <div class="action-box">
+        <h3>🎭 Cultural Respect</h3>
+        <ul>
+          <li>Respect local culture, traditions, and dress codes</li>
+          <li>Travel with an open mind and respect for local ways of life</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h3>🏘️ Community Support</h3>
+        <ul>
+          <li>Support local businesses, artisans, and communities</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h3>♻️ Environmental Responsibility</h3>
+        <ul>
+          <li>Reduce waste by using reusable bottles and bags</li>
+          <li>Save water and energy, especially in water-scarce areas</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h3>📸 Respect & Privacy</h3>
+        <ul>
+          <li>Ask permission before taking photos of people</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h3>🐾 Ethical Choices</h3>
+        <ul>
+          <li>Avoid buying products that harm wildlife or heritage</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h3>🧭 Safety & Guidance</h3>
+        <ul>
+          <li>Follow your guide’s instructions and safety guidelines</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Download Section -->
+    <div style="margin-top:60px;">
+      <h3 style="color:#285943; margin-bottom:20px; font-size:1.5rem;">
+        ⬇️ Download Our Responsible Travel Guidelines
+      </h3>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px;">
+
+        <a href="#" class="btn" style="padding:12px 20px; background:#285943; color:white; border-radius:8px;">
+          Responsible Travel Tips – Jordan Classical Tours
+        </a>
+
+        <a href="#" class="btn" style="padding:12px 20px; background:#4A7351; color:white; border-radius:8px;">
+          Activities & Experiences Code of Conduct
+        </a>
+
+        <a href="#" class="btn" style="padding:12px 20px; background:#285943; color:white; border-radius:8px;">
+          Cultural, Community & Guiding Code
+        </a>
+
+        <a href="#" class="btn" style="padding:12px 20px; background:#4A7351; color:white; border-radius:8px;">
+          Food & Beverage & Shopping Guidelines
+        </a>
+
+        <a href="#" class="btn" style="padding:12px 20px; background:#285943; color:white; border-radius:8px;">
+          Transport & Vehicle Activities Guidelines
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Quote / Note -->
+    <div style="margin-top:50px; padding:25px; background:white; border-radius:12px; box-shadow:0 5px 18px rgba(0,0,0,0.06);">
+      <p style="font-style:italic; color:#555; margin-bottom:10px;">
+        “These guidelines are based on Travelife sustainability standards and have been adapted by Jordan Classical Tours to ensure responsible travel experiences in Jordan.”
+      </p>
+      <p style="color:#444;">
+        These guidelines help ensure a safe, respectful, and sustainable experience for both our guests and local communities.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Parallax -->
+<div class="parallax" style="background-image:url('https://media.cntraveller.com/photos/61a773f35e488edbf6a163b4/16:9/w_1920%2Cc_limit/sustainable%25202022.jpg');"></div>
+
+<!-- Contact -->
+<section class="fade-section" style="text-align:center; padding:70px 20px;">
+  <h2 style="font-size:2.5rem; color:#285943; margin-bottom:20px;">📩 Sustainability Contact & Feedback</h2>
+  
+  <p style="font-size:1.1rem; line-height:1.7; margin-bottom:30px; color:#555;">
+    We are committed to continuously improving our sustainability practices and value feedback from our guests, partners, and stakeholders.
+    <br><br>
+    If you have any suggestions, comments, or concerns related to sustainability, we encourage you to share them with us through the form below. All feedback is received and reviewed by our Sustainability Coordinator.
+  </p>
+  
+  <form id="feedbackForm" style="display:inline-block; text-align:left; max-width:500px; width:100%;">
+    <input type="text" name="name" placeholder="Full Name (required)" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+    <input type="email" name="email" placeholder="Email Address (required)" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+    <select name="type" style="width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+      <option value="">Type of Feedback</option>
+      <option value="general">General Inquiry</option>
+      <option value="suggestion">Suggestion</option>
+      <option value="complaint">Complaint</option>
+      <option value="sustainability">Sustainability Feedback 🌿</option>
+    </select>
+    <input type="text" name="subject" placeholder="Subject" style="width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+    <textarea name="message" placeholder="Message (required)" required style="width:100%; padding:12px; margin-bottom:12px; border-radius:6px; border:1px solid #ccc; min-height:120px;"></textarea>
+    <input type="submit" value="Send Message" style="width:100%; padding:14px; border-radius:8px; background:#285943; color:white; font-weight:bold; border:none; cursor:pointer;">
+  </form>
+
+  <!-- Thank You Message -->
+  <p style="color:green; margin-top:15px; font-size:1rem;">
+    Thank you for your message. We appreciate your feedback and will respond as soon as possible.
+  </p>
+
+  <hr style="border:0; border-top:1px solid #ccc; margin:40px 0;">
+
+  <!-- Extended Feedback -->
+  <h3 style="color:#285943; margin-bottom:15px;">Prefer to share more detailed feedback?</h3>
+  <p style="font-size:1rem; line-height:1.6; color:#555; margin-bottom:15px;">
+    You can also provide your feedback through our extended survey. Your responses help us improve our services and strengthen our commitment to responsible tourism.
+  </p>
+  <a href="#" target="_blank" style="display:inline-block; padding:12px 25px; background:#4A7351; color:white; border-radius:8px; font-weight:bold; text-decoration:none; transition:0.3s;">
+    🌿 Sustainability Feedback Form
+  </a>
+</section>
+
+<!-- Modals -->
+<div id="modalPolicy" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>📜 Sustainability Policy (Full)</h2>
+    <p>Embedded across all operations including supplier selection, transport decisions, accommodations, excursions, and communication. Continuous monitoring, protecting human rights, child protection, promoting animal welfare, transparent communication, and internal evaluations...</p>
+  </div>
+</div>
+
+<div id="modalReport" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>📊 Sustainability Report Summary (Full)</h2>
+    <p>Highlights include the Sustainability Policy, Sustainability Action Plan, staff engagement initiatives, monitoring performance, and future actions as part of responsible tourism and Travelife certification.</p>
+  </div>
+</div>
+
+<div id="modalTips" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>🌍 Responsible Travel Tips (Full)</h2>
+    <p>Includes activity-specific codes of conduct, Travelife standards, detailed travel guidelines, and practical tips to ensure safe, respectful, and sustainable experience for guests and communities.</p>
+  </div>
+</div>
+
+<script>
+// Feedback form
+const form=document.getElementById('feedbackForm');
+const thankMessage=document.getElementById('thankMessage');
+form.addEventListener('submit',e=>{e.preventDefault();thankMessage.style.display='block';form.reset();});
+
+// Modal logic
+const modalBtns=document.querySelectorAll('.btn[data-modal]');
+const modals=document.querySelectorAll('.modal');
+const closeBtns=document.querySelectorAll('.close');
+modalBtns.forEach(btn=>{btn.addEventListener('click',()=>{document.getElementById(btn.getAttribute('data-modal')).style.display='block';});});
+closeBtns.forEach(btn=>{btn.addEventListener('click',()=>{btn.closest('.modal').style.display='none';});});
+window.onclick=e=>{modals.forEach(modal=>{if(e.target==modal) modal.style.display='none';});}
+
+// Card popup logic
+const cardModal = document.getElementById('cardModal');
+const modalContent = document.getElementById('modalContent');
+const actionCards = document.querySelectorAll('.action-card');
+const modalClose = cardModal.querySelector('.close');
+
+actionCards.forEach(card=>{
+  card.addEventListener('click', ()=>{
+    modalContent.innerHTML = card.getAttribute('data-content');
+    cardModal.style.display = 'block';
+  });
+});
+
+modalClose.addEventListener('click', ()=>{cardModal.style.display='none';});
+window.addEventListener('click', e=>{if(e.target==cardModal) cardModal.style.display='none';});
+
+
+// Fade-in sections
+const faders=document.querySelectorAll('.fade-section,.split,.grid,.card,.practices-grid');
+const appearOptions={threshold:0.3,rootMargin:"0px 0px -50px 0px"};
+const appearOnScroll=new IntersectionObserver((entries,observer)=>{entries.forEach(entry=>{if(!entry.isIntersecting) return; entry.target.classList.add('visible'); observer.unobserve(entry.target);});},appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
+
+</body>
+</html>
